@@ -1,0 +1,569 @@
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+<style>
+body {
+  background-color: #fff;
+  size: 100%;
+  width: auto;
+  height: auto;
+  font-family: "Helvetica Neue",Helvetica,sans-serif;
+  color: RGBA(0,0,0,0.8);
+}
+
+main {
+  margin: 4px 0 0px 0;
+  background-color: #f6f6f6;
+  min-height: 90%;
+  padding-bottom: 100px;
+}
+
+.hidden {
+  display: none
+}
+
+/* Shopping Cart Section - Start */
+.shopping-cart {
+  padding-bottom: 10px;
+  overflow:hidden;
+  transition: max-height 5s ease-in-out;
+}
+
+.shopping-cart.hide {
+  max-height: 0;
+  pointer-events: none;
+}
+
+.shopping-cart .content {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  background-color: white;
+}
+
+.shopping-cart .block-heading {
+  padding-top: 40px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.shopping-cart .block-heading p {
+  text-align: center;
+  max-width: 600px;
+  margin: auto;
+  color: RGBA(0,0,0,0.45);
+}
+
+.shopping-cart .block-heading h1,
+.shopping-cart .block-heading h2,
+.shopping-cart .block-heading h3 {
+  margin-bottom: 1.2rem;
+  color: #8C8C8C;
+}
+
+.shopping-cart .items {
+  margin: auto;
+}
+
+.shopping-cart .items .product {
+  margin-bottom: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.shopping-cart .items .product .info {
+  padding-top: 0px;
+  text-align: left;
+}
+
+.shopping-cart .items .product .info .product-details .product-detail {
+  padding-top: 40px;
+  padding-left: 40px;
+}
+
+.shopping-cart .items .product .info .product-details h5 {
+  color: #8C8C8C;
+  font-size: 19px;
+}
+
+.shopping-cart .items .product .info .product-details .product-info {
+  font-size: 15px;
+  margin-top: 15px;
+}
+
+.shopping-cart .items .product .info .product-details label {
+  width: 50px;
+  color: #8C8C8C;
+  font-size: 19px;
+}
+
+.shopping-cart .items .product .info .product-details input {
+  width: 80px;
+}
+
+.shopping-cart .items .product .info .price {
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.shopping-cart .summary {
+  border-top: 2px solid #8C8C8C;
+  background-color: #f7fbff;
+  height: 100%;
+  padding: 30px;
+}
+
+.shopping-cart .summary h3 {
+  text-align: center;
+  font-size: 1.3em;
+  font-weight: 400;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.shopping-cart .summary .summary-item:not(:last-of-type) {
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.shopping-cart .summary .text {
+  font-size: 1em;
+  font-weight: 400;
+}
+
+.shopping-cart .summary .price {
+  font-size: 1em;
+  float: right;
+}
+
+.shopping-cart .summary button {
+  margin-top: 20px;
+  background-color: #8C8C8C;
+}
+
+@media (min-width: 768px) {
+
+  .shopping-cart .items .product .info .product-details .product-detail {
+    padding-top: 40px;
+    padding-left: 40px;
+  }
+
+  .shopping-cart .items .product .info .price {
+    font-weight: 500;
+    font-size: 22px;
+    top: 17px;
+  }
+
+  .shopping-cart .items .product .info .quantity {
+    text-align: center;
+  }
+
+  .shopping-cart .items .product .info .quantity .quantity-input {
+    padding: 4px 10px;
+    text-align: center;
+  }
+}
+
+/* Card Payment Section - Start */
+.container_payment {
+  display: none;
+}
+
+.payment-form {
+  padding-bottom: 10px;
+  margin-right: 15px;
+  margin-left: 15px;
+    font-family: "Helvetica Neue",Helvetica,sans-serif;
+}
+  
+.payment-form.dark {
+    background-color: #f6f6f6;
+}
+  
+.payment-form .content {
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  background-color: white;
+}
+  
+.payment-form .block-heading {
+  padding-top: 40px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+  
+.payment-form .block-heading p {
+  text-align: center;
+  max-width: 420px;
+  margin: auto;
+  color: RGBA(0,0,0,0.45);
+}
+  
+.payment-form .block-heading h1,
+.payment-form .block-heading h2,
+.payment-form .block-heading h3 {
+  margin-bottom: 1.2rem;
+  color: #0f21c5;
+}
+  
+.payment-form .form-payment {
+  border-top: 2px solid #C6E9FA;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  background-color: #ffffff;
+  padding: 0;
+  max-width: 600px;
+  margin: auto;
+}
+  
+.payment-form .title {
+  font-size: 1em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.8em;
+  font-weight: 400;
+  padding-bottom: 8px;
+}
+  
+.payment-form .products {
+  background-color: #f7fbff;
+  padding: 25px;
+}
+
+.payment-form .products .item {
+  margin-bottom: 1em;
+}
+  
+.payment-form .products .item-name {
+  font-weight: 500;
+  font-size: 0.9em;
+}
+  
+.payment-form .products .item-description {
+  font-size: 0.8em;
+  opacity: 0.6;
+}
+  
+.payment-form .products .item p {
+  margin-bottom: 0.2em;
+}
+  
+.payment-form .products .price {
+  float: right;
+  font-weight: 500;
+  font-size: 0.9em;
+}
+  
+.payment-form .products .total {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+  padding-top: 19px;
+  font-weight: 500;
+  line-height: 1;
+}
+  
+.payment-form .payment-details {
+  padding: 25px 25px 15px;
+  height: 100%;
+}
+
+.payment-form .payment-details label {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #3341d9;
+  text-transform: uppercase;
+}
+  
+.payment-form .payment-details button {
+  margin-top: 0.6em;
+  padding: 12px 0;
+  font-weight: 500;
+  background-color:  #3341d9;
+  margin-bottom: 10px;
+}
+  
+.payment-form .date-separator {
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+.payment-form a, .payment-form a:not([href]) {
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  color:  #8C8C8C;
+  cursor:pointer;
+}
+
+.payment-form a:not([href]):hover{
+  color:  #8C8C8C;
+  cursor:pointer;
+}
+
+.input-background {
+  background-position: 98% 50%;
+  background-repeat: no-repeat;
+  background-color: #fff;
+}
+
+footer {
+  padding: 2% 10% 6% 10%;
+  margin: 0 auto;
+  position: relative;
+}
+
+#horizontal_logo {
+    width: 150px;
+  margin: 0;
+}
+
+footer p a {
+  color:  #8C8C8C;
+  text-decoration: none;
+}
+
+footer p a:hover {
+  color:  #8C8C8C;
+  text-decoration: none;
+}
+  
+@media (min-width: 576px) {
+    .payment-form .title {
+      font-size: 1.2em;
+    }
+  
+    .payment-form .products {
+      padding: 40px;
+    }
+  
+    .payment-form .products .item-name {
+      font-size: 1em;
+    }
+  
+    .payment-form .products .price {
+      font-size: 1em;
+    }
+  
+    .payment-form .payment-details {
+      padding: 40px 40px 30px;
+    }
+  
+    .payment-form .payment-details button {
+      margin-top: 1em;
+      margin-bottom: 15px;
+  }
+
+  .footer_logo {
+    margin: 0 0 0 0;
+    width: 20%;
+    text-align: left;
+    position: absolute;
+  }
+
+  .footer_text {
+    margin: 0 0 0 65%;
+    width: 200px;
+    text-align: left;
+    position: absolute
+  }
+
+  footer p {
+    padding: 1px;
+    font-size: 13px;
+    color: RGBA(0,0,0,0.45);
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 576px) {
+  footer {
+    padding: 5% 1% 15% 1%;
+    height: 55px;
+  }
+
+  footer p {
+    padding: 1px;
+    font-size: 11px;
+    margin-bottom: 0;
+  }
+  .footer_text {
+    margin: 0 0 0 45%;
+    width: 180px;
+    position: absolute
+  }
+
+  .footer_logo {
+    margin: 0 0 0 0;
+    position: absolute;
+  }
+}
+</style>
+<section class="shopping-cart dark">
+  <div class="container" id="container">
+    <div class="block-heading">
+      <h2>Confirmação de Compra</h2>
+    </div>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-12 col-lg-8">
+          <div class="items">
+            <div class="product">
+              <div class="info">
+                <div class="product-details">
+                  <div class="row justify-content-md-center">
+                   
+                    <div class="col-md-4 product-detail">
+                      <h5>Produto</h5>
+                      <div class="product-info">
+                        <p><b>Descrição: </b><span id="product-description">Número do Sorteio</span><br>
+                        <b>Preço:</b> R$ <span id="unit-price">20</span></p>
+                      </div>
+                    </div>
+                       <div class="col-md-3 product-detail" style="display:block">
+                          <label for="quantity"><h5>Quantidade</h5></label>
+                          <input type="number" id="quantity" value="1" class="form-control">
+                        </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+          <div class="summary">
+            <h3>Sacola de compras</h3>
+            <div class="summary-item"><span class="text">Subtotal: </span><span class="price"id="cart-total"></span></div>
+            <button class="btn btn-primary btn-lg btn-block" id="checkout-btn">Confirmar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<Payment>
+<section class="payment-form dark">
+  <div class="container_payment">
+    <div class="block-heading">
+      <h2>Cartão de Pagamento</h2>
+      <p>Insira suas informações de pagamento</p>
+    </div>
+    <div class="form-payment">
+      <div class="products">
+        <h2 class="title">Resumo</h3>
+        <div class="item">
+          <span class="price" id="summary-price"></span>
+          <p class="item-name">Número do Sorteio <span id="summary-quantity"></span></p>
+        </div>
+        <div class="total">Total<span class="price" id="summary-total"></span></div>
+      </div>
+      <div class="payment-details">
+        <form action="" method="post" id="paymentForm">
+          <h3 class="title">Forma de Pagamento</h3>
+  <div>
+    <select class="form-control" id="paymentMethod" name="paymentMethod">
+      <!-- Create an option for each payment method with their name and complete the ID in the attribute 'value'. -->
+      <option value="credit_card">Cartão de Crédito</option>
+      <option value="debit_card">Cartão de Débito</option>
+      <option value="pix">PIX</option>
+     
+    </select>
+  </div>
+  <br>
+            <h3 class="title">Detalhes do Comprador</h3>
+            <div class="row">
+              <div class="form-group col">
+                <label for="email">E-Mail</label>
+                <input id="email" name="email" type="email" class="form-control" required></select>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-sm-5">
+                <label for="docType">Tipo do Documento</label>
+                <select id="docType" name="docType" data-checkout="docType" type="text" class="form-control">
+                  <option value="CPF">CPF</option>
+                </select>
+              </div>
+              <div class="form-group col-sm-7">
+                <label for="docNumber">Número do Documento</label>
+                <input id="docNumber" name="docNumber" data-checkout="docNumber" type="text" class="form-control" pattern="\d{11}" title="Digite o CPF no formato 12345678911"required />
+              </div>
+            </div>
+            <br>
+            <h3 class="title">Informações do Comprador</h3>
+            <div class="row">
+            <div class="form-group col-sm-8">
+              <label for="payerFirstName" >Nome</label> 
+              <input id="payerFirstName" name="payerFirstName" type="text" class="form-control" required>
+            </div>
+            <div class="form-group col-sm-8">
+              <label for="payerLastName" >Sobrenome</label>
+              <input id="payerLastName" name="payerLastName" type="text" class="form-control" required>
+            </div>
+            </div>
+            <section id="telefone">
+              <div class="row">
+                <div class="form-group col-sm-8">
+                  <label for="cardholdertelefone">Telefone</label>
+                  <input id="cardholdertelefone" data-checkout="cardholdertelefone" type="text" class="form-control" placeholder="+888 (88)8888-8888" required>
+                </div>
+                
+              
+              </section>
+            <section id="pagamento_cartao">
+            <div class="row">
+              <div class="form-group col-sm-8">
+                <label for="cardholderName">Nome escrito no cartão</label>
+                <input id="cardholderName" data-checkout="cardholderName" type="text" class="form-control">
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="">Data de Expiração</label>
+                <div class="input-group expiration-date">
+                  <input type="text" class="form-control" placeholder="MM" id="cardExpirationMonth" data-checkout="cardExpirationMonth"
+                    onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=on>
+                  <span class="date-separator">/</span>
+                  <input type="text" class="form-control" placeholder="YY" id="cardExpirationYear" data-checkout="cardExpirationYear"
+                    onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=on>
+                </div>
+              </div>
+              <div class="form-group col-sm-8">
+                <label for="cardNumber">Número do Cartão</label>
+                <input type="text" class="form-control input-background" id="cardNumber" data-checkout="cardNumber"
+                  onselectstart="return false" onpaste="return true" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=on >
+              </div>
+              <div class="form-group col-sm-4">
+                <label for="securityCode">CVV</label>
+                <input id="securityCode" data-checkout="securityCode" type="text" class="form-control"
+                  onselectstart="return false" onpaste="return false" onCopy="return false" onCut="return false" onDrag="return false" onDrop="return false" autocomplete=on>
+              </div>
+            </section>
+              <div id="issuerInput" class="form-group col-sm-12 hidden">
+                <label for="issuer">Issuer</label>
+                <select id="issuer" name="issuer" data-checkout="issuer" class="form-control"></select>
+              </div>
+              <div class="form-group col-sm-12" style="display: none;">
+                <label for="installments">Installments</label>
+                <select type="text" id="installments" name="installments" class="form-control">
+                  <option value="1">1</option>
+                </select>
+              </div>
+              <div class="form-group col-sm-12">
+                <input type="hidden" name="transactionAmount" id="amount" value="10" />
+                <input type="hidden" name="paymentMethodId" id="paymentMethodId" value="" />
+                <input type="hidden" name="description" id="description" />
+                <br>
+                <button type="submit" class="btn btn-primary btn-block">Pagar</button>
+                <br>
+                <a id="go-back">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 10 10" class="chevron-left">
+                    <path fill="#009EE3" fill-rule="nonzero"id="chevron_left" d="M7.05 1.4L6.2.552 1.756 4.997l4.449 4.448.849-.848-3.6-3.6z"></path>
+                  </svg>
+                 Voltar
+                </a>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+
+</section>
